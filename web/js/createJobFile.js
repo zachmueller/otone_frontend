@@ -61,7 +61,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
       this['current-liquid-volume'] += ingredientVolume;
       var heightRatio = this['current-liquid-volume'] / this['total-liquid-volume'];
       if(!isNaN(heightRatio)) {
-        location['current-liquid-offset'] = (this.depth * heightRatio) - this.depth;
+        location['current-liquid-offset'] = this.depth - (this.depth * heightRatio);
       }
     }
 
@@ -629,17 +629,17 @@ function makePipettingMotion (theDeck, theTool, thisParams, shouldDropPlunger) {
     // don't update the volume yet if we're doing a MIX command (see below)
     locationPos.updateVolume(Number(thisParams.volume));
 
-    var specifiedOffset = thisParams['tip-offset'] || 0;
+    var specifiedOffset = (thisParams['tip-offset'] || 0)+locationPos.depth;
 
     var arriveDepth;
 
-    var bottomLimit = (locationPos.depth - 0.2) * -1; // give it 0.2 mm minimum distance from bottom of well
+    var bottomLimit = locationPos.z; // give it 0.2 mm minimum distance from bottom of well
 
     if(thisParams['liquid-tracking']===true) {
       arriveDepth = specifiedOffset-locationPos['current-liquid-offset'];
     }
     else {
-      arriveDepth = bottomLimit + specifiedOffset;
+      arriveDepth = bottomLimit;
     }
 
     if(arriveDepth < bottomLimit) {
