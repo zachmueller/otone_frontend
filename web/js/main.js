@@ -393,7 +393,7 @@ function selectContainer(currentDiv) {
     }
     
     var odBtnB = firstTD.lastChild;
-    var odBtnA = secondtD.lastChild;
+    var odBtnA = secondTD.lastChild;
 
     odBtnB.disabled = false;
     odBtnA.disabled = false;
@@ -434,23 +434,34 @@ function saveContainer (axis) {
   
   if(axis == 'a'){
     
-    var moveBtn = secondTD.lastChild.previousElementSibling;
+    var moveBtn = secondTD.lastChild.previousElementSibling.previousElementSibling;
     moveBtn.style.display = 'inline-block';
     if(contName === TIPRACK_ORIGIN['a']){
       var resetBtn = secondTD.lastChild;
       resetBtn.style.display = 'inline-block';
     }
+
+    var odBtn = secondTD.lastChild;
+    odBtn.disabled = false;
   
   } else {
 
-    var moveBtn = firstTD.lastChild.previousElementSibling;
+    var moveBtn = firstTD.lastChild.previousElementSibling.previousElementSibling;
     moveBtn.style.display = 'inline-block';
     if(contName === TIPRACK_ORIGIN['b']){
       var resetBtn = firstTD.lastChild;
       resetBtn.style.display = 'inline-block';
     }
 
+    var odBtn = firstTD.lastChild;
+    odBtn.disabled = false;
   }
+
+  
+  
+
+  
+  
 
   calibrateContainer(axis, contName);
 
