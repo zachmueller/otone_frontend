@@ -437,7 +437,7 @@ function saveContainer (axis) {
     var moveBtn = secondTD.lastChild.previousElementSibling.previousElementSibling;
     moveBtn.style.display = 'inline-block';
     if(contName === TIPRACK_ORIGIN['a']){
-      var resetBtn = secondTD.lastChild;
+      var resetBtn = secondTD.lastChild.previousElementSibling;
       resetBtn.style.display = 'inline-block';
     }
 
@@ -449,7 +449,7 @@ function saveContainer (axis) {
     var moveBtn = firstTD.lastChild.previousElementSibling.previousElementSibling;
     moveBtn.style.display = 'inline-block';
     if(contName === TIPRACK_ORIGIN['b']){
-      var resetBtn = firstTD.lastChild;
+      var resetBtn = firstTD.lastChild.previousElementSibling;
       resetBtn.style.display = 'inline-block';
     }
 
