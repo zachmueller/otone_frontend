@@ -62,6 +62,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
       var heightRatio = this['current-liquid-volume'] / this['total-liquid-volume'];
       if(!isNaN(heightRatio)) {
         location['current-liquid-offset'] = this.depth - (this.depth * heightRatio);
+        console.log('this.depth: ',this.depth);
       }
     }
 
