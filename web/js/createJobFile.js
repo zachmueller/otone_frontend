@@ -629,17 +629,18 @@ function makePipettingMotion (theDeck, theTool, thisParams, shouldDropPlunger) {
     // don't update the volume yet if we're doing a MIX command (see below)
     locationPos.updateVolume(Number(thisParams.volume));
 
-    var specifiedOffset = (thisParams['tip-offset'] || 0)+locationPos.depth;
+    var specifiedOffset = thisParams['tip-offset'] || 0;
+    specifiedOffset += locationPos.depth;
 
     var arriveDepth;
 
-    var bottomLimit = locationPos.z; // give it 0.2 mm minimum distance from bottom of well
+    var bottomLimit = (locationPos.depth - 0.2) * -1; // give it 0.2 mm minimum distance from bottom of well
 
     if(thisParams['liquid-tracking']===true) {
       arriveDepth = specifiedOffset-locationPos['current-liquid-offset'];
     }
     else {
-      arriveDepth = bottomLimit;
+      arriveDepth = bottomLimit + specifiedOffset;
     }
 
     if(arriveDepth < bottomLimit) {
