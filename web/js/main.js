@@ -442,7 +442,7 @@ function saveContainer (axis) {
     }
 
     var odBtn = secondTD.lastChild;
-    odBtn.disabled = false;
+    odBtn.style.display = 'inline-block';
   
   } else {
 
@@ -454,7 +454,7 @@ function saveContainer (axis) {
     }
 
     var odBtn = firstTD.lastChild;
-    odBtn.disabled = false;
+    odBtn.style.display = 'inline-block';
   }
 
   
