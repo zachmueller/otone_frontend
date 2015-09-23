@@ -259,14 +259,14 @@ function handleContainers (newContainers) {
         PB.innerHTML = "<button type=\"button\" class=\"btn tron-black\" onclick=\"saveContainer('b');\" disabled>Save</button> \
         <button type=\"button\" class=\"btn tron-black\" onclick=\"movetoContainer('b');\" style=\"display:inline-block;\" disabled>Move To</button> \
         <button type=\"button\" class=\"btn tron-red\" onclick=\"relativeCoords();\" style=\"display:none;\" disabled>Reset</button> \
-        <button type=\"button\" class=\"btn tron-grey\" onclick=\"overrideDepth();\" style=\"display:inline-block;\" disabled>OD</button>";
+        <button type=\"button\" class=\"btn tron-black\" onclick=\"overrideDepth();\" style=\"display:inline-block;\" disabled>OD</button>";
 
       } else {
         
         PB.innerHTML = "<button type=\"button\" class=\"btn tron-black\" onclick=\"saveContainer('b');\" disabled>Save</button> \
         <button type=\"button\" class=\"btn tron-black\" onclick=\"movetoContainer('b');\" style=\"display:none;\" disabled>Move To</button> \
         <button type=\"button\" class=\"btn tron-red\" onclick=\"relativeCoords();\" style=\"display:none;\" disabled>Reset</button> \
-        <button type=\"button\" class=\"btn tron-grey\" onclick=\"overrideDepth();\" style=\"display:none;\" disabled>OD</button>";
+        <button type=\"button\" class=\"btn tron-black\" onclick=\"overrideDepth();\" style=\"display:none;\" disabled>OD</button>";
 
       }
 
@@ -276,14 +276,14 @@ function handleContainers (newContainers) {
           PA.innerHTML = "<button type=\"button\" class=\"btn tron-blue\" onclick=\"saveContainer('a');\" disabled>Save</button> \
           <button type=\"button\" class=\"btn tron-blue\" onclick=\"movetoContainer('a');\" style=\"display:inline-block;\" disabled>Move To</button> \
           <button type=\"button\" class=\"btn tron-red\" onclick=\"relativeCoords();\" style=\"display:none;\" disabled>Reset</button> \
-          <button type=\"button\" class=\"btn tron-grey\" onclick=\"overrideDepth();\" style=\"display:inline-block;\" disabled>OD</button>";
+          <button type=\"button\" class=\"btn tron-blue\" onclick=\"overrideDepth();\" style=\"display:inline-block;\" disabled>OD</button>";
         
         } else {
           
           PA.innerHTML = "<button type=\"button\" class=\"btn tron-blue\" onclick=\"saveContainer('a');\" disabled>Save</button> \
           <button type=\"button\" class=\"btn tron-blue\" onclick=\"movetoContainer('a');\" style=\"display:none;\" disabled>Move To</button> \
           <button type=\"button\" class=\"btn tron-red\" onclick=\"relativeCoords();\" style=\"display:none;\" disabled>Reset</button> \
-          <button type=\"button\" class=\"btn tron-grey\" onclick=\"overrideDepth();\" style=\"display:none;\" disabled>OD</button>";
+          <button type=\"button\" class=\"btn tron-blue\" onclick=\"overrideDepth();\" style=\"display:none;\" disabled>OD</button>";
         
         }
       }
@@ -367,10 +367,10 @@ function selectContainer(currentDiv) {
     firstTD = currentSelectedContainer.nextSibling;
     secondTD = firstTD.nextSibling;
     
-    var moveBtnB = firstTD.lastChild.previousElementSibling;
+    var moveBtnB = firstTD.lastChild.previousElementSibling.previousElementSibling;
     var saveBtnB = firstTD.firstChild;
 
-    var moveBtnA = secondTD.lastChild.previousElementSibling;
+    var moveBtnA = secondTD.lastChild.previousElementSibling.previousElementSibling;
     var saveBtnA = secondTD.firstChild;
 
 
