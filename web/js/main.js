@@ -50,22 +50,22 @@ window.addEventListener ('load', function () {
       var msg = {
         'type' : 'getContainers'
       };
-      if(debug===true) console.log('msg stringified... '+JSON.stringify(msg));
+      if(main_debug===true) console.log('msg stringified... '+JSON.stringify(msg));
       connection.session.publish('com.opentrons.browser_to_robot', [JSON.stringify(msg)]);
       var msg = {
         'type' : 'getCalibrations'
       };
-      if(debug===true) console.log('msg stringified... '+JSON.stringify(msg));
+      if(main_debug===true) console.log('msg stringified... '+JSON.stringify(msg));
       connection.session.publish('com.opentrons.browser_to_robot', [JSON.stringify(msg)]);
       robotStatus = status;
     });
 
-    if(debug===true) console.log('about to publish com.opentrons.browser_ready TRUE');
+    if(main_debug===true) console.log('about to publish com.opentrons.browser_ready TRUE');
     connection.session.publish('com.opentrons.browser_ready', [true]);
 
     connection.session.subscribe('com.opentrons.robot_to_browser', function(str) {
       try{
-        if(debug===true){
+        if(main_debug===true){
           if(verbose===true || str[0]!==str_last){
             console.log('message on com.opentrons.robot_to_browser: '+str[0])
           }
@@ -297,7 +297,7 @@ function handleContainers (newContainers) {
 
     if(theContainerLocations.b[name].z < highestSpot){
       highestSpot = theContainerLocations.b[name].z;
-      if(debug===true){
+      if(main_debug===true){
         console.log('highestSpot('+name+'-b.2):'+highestSpot);
         console.log('theContainerLocations.b['+name+'] = '+theContainerLocations.b[name].z);
       }
@@ -307,11 +307,11 @@ function handleContainers (newContainers) {
   }
 
 
-  if(debug===true) console.log('highestSpot(1):'+highestSpot)
+  if(main_debug===true) console.log('highestSpot(1):'+highestSpot)
   if(highestSpot>200) {
     highestSpot = 5;
   }
-  if(debug===true) console.log('highestSpot(2):'+highestSpot)
+  if(main_debug===true) console.log('highestSpot(2):'+highestSpot)
   if(highestSpot<5) {
     highestSpot = 5;
   }
@@ -336,10 +336,10 @@ function selectContainer(currentDiv) {
     firstTD = currentSelectedContainer.nextSibling;
     secondTD = firstTD.nextSibling;
     
-    if (debug===true) console.log(firstTD);
+    if (main_debug===true) console.log(firstTD);
     var moveBtnB = firstTD.lastChild.previousElementSibling.previousElementSibling;
     var saveBtnB = firstTD.firstChild;
-    if (debug===true) console.log(secondTD);
+    if (main_debug===true) console.log(secondTD);
     var moveBtnA = secondTD.lastChild.previousElementSibling.previousElementSibling;
     var saveBtnA = secondTD.firstChild;
 
@@ -380,7 +380,7 @@ function selectContainer(currentDiv) {
     saveBtnB.disabled = false;
 
 
-    if (debug===true) {console.log('currentDiv: ',currentDiv);
+    if (main_debug===true) {console.log('currentDiv: ',currentDiv);
       console.log("TIPRACK_ORIGIN['a']: ",TIPRACK_ORIGIN['a']);
       console.log("TIPRACK_ORIGIN['b']: ",TIPRACK_ORIGIN['b']);
     }
@@ -515,7 +515,7 @@ var lineLimit = 500; // If this number is too big bad things happen
 var socketHandler = {
   'position' : (function(){
     return function (data) {
-      if (debug===true) console.log(data);
+      if (main_debug===true) console.log(data);
       msg = data.string;
       try {
         var coordMessage = msg;
@@ -612,7 +612,7 @@ var socketHandler = {
   })(),
 
   'coordinates' : function (data) {
-    if(debug===true) console.log(data);
+    if(main_debug===true) console.log(data);
     //just for debugging?
   },
   'status' : function (data) {
@@ -638,7 +638,7 @@ var socketHandler = {
   'containers' : function (data) {
     var blob = data;//JSON.parse(data);
     var newContainers = blob.containers;
-    if (debug===true) {
+    if (main_debug===true) {
       console.log('newContainers...');
       console.log(newContainers);
     }
@@ -706,7 +706,7 @@ var socketHandler = {
     }
   },
   'limit' : function(data) {
-    if(debug===true) console.log('limit... '+data.slice(0,4));
+    if(main_debug===true) console.log('limit... '+data.slice(0,4));
     setStatus('Minimum limit switch hit for '+data.slice(-1).toUpperCase()+' axis! Please home the machine.','red');
     var dt1 = new Date();
     var utcDate = dt1.toUTCString();
@@ -717,7 +717,7 @@ var socketHandler = {
   },
   'progress' : function(data) {
     //not currently being used
-    if(debug===true) console.log('making progress... '+data);
+    if(main_debug===true) console.log('making progress... '+data);
   },
   'success' : function(data) {
     setStatus(data,'green');
@@ -736,7 +736,7 @@ var timeSentJob = undefined;
 /////////////////////////////////
 
 function sendMessage (msg) {
-  if(debug===true) console.log('sendMessage('+msg+')');
+  if(main_debug===true) console.log('sendMessage('+msg+')');
   try{
     console.log('msg: '+JSON.stringify(msg))
   } catch(e) {
@@ -1013,7 +1013,7 @@ function moveVolume (axis) {
   var volumeMenu = document.getElementById('volume_testing');
   var volume = volumeMenu ? volumeMenu.value : undefined;
 
-  if(debug===true) console.log('volume '+volume);
+  if(main_debug===true) console.log('volume '+volume);
 
   if(volume) {
 
@@ -1025,7 +1025,7 @@ function moveVolume (axis) {
     if(!isNaN(totalPipetteVolume)) {
       var plungerPercentage = volume / totalPipetteVolume;
 
-      if(debug===true) console.log('moving to '+plungerPercentage);
+      if(main_debug===true) console.log('moving to '+plungerPercentage);
 
       sendMessage({
         'type' : 'movePlunger',
@@ -1085,14 +1085,14 @@ function saveVolume (axis) {
     var distanceFromBottom = robotState.pipettes[axis].bottom - robotState[axis];
     var percentageFromBottom = distanceFromBottom / totalDistance;
 
-    if(debug===true) console.log('saved at '+percentageFromBottom);
+    if(main_debug===true) console.log('saved at '+percentageFromBottom);
 
     // determine the number of uL this pipette can do based of percentage
     var totalVolume = volume / percentageFromBottom;
 
     if(!isNaN(totalVolume) && totalVolume>0) {
 
-      if(debug===true) console.log('pipetteVolume_'+axis);
+      if(main_debug===true) console.log('pipetteVolume_'+axis);
       document.getElementById('pipetteVolume_'+axis).innerHTML = totalVolume.toFixed(2);
       robotState.pipettes[axis].volume = totalVolume;
 
@@ -1192,7 +1192,7 @@ function step (axis, multiplyer) {
 
   var allAxis = 'xyzab';
 
-  if(debug===true){
+  if(main_debug===true){
     console.log("multiplyer is: "+multiplyer);
     console.log("it's a number? "+!isNaN(multiplyer));
   }
@@ -1201,10 +1201,10 @@ function step (axis, multiplyer) {
     var stepSize;
     if(axis==='a' || axis==='b') stepSize = document.getElementById('stepSize_ab').value;
     else stepSize = document.getElementById('stepSize_xyz').value;
-    if(debug===true) console.log('stepSize is '+stepSize);
+    if(main_debug===true) console.log('stepSize is '+stepSize);
     if(!isNaN(stepSize)) {
       stepSize *= multiplyer;
-      if(debug===true) console.log("new stepSize: "+stepSize);
+      if(main_debug===true) console.log("new stepSize: "+stepSize);
       msg.data[axis] = stepSize;
       sendMessage(msg);
     }
