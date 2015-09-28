@@ -4,7 +4,7 @@
 
 var globalConnection;
 var robotStatus = false;
-var debug = true;
+var main_debug = false;
 var verbose = false;
 var str_last = "";
 
@@ -39,7 +39,7 @@ window.addEventListener ('load', function () {
     // javascript to the other clients (ie python)
 
     connection.session.subscribe('com.opentrons.robot_ready', function(status){
-      if(debug===true) {
+      if(main_debug===true) {
         console.log('robotReady called');
         console.log('robotStatus: '+robotStatus);
         console.log('status: '+status);
@@ -336,10 +336,10 @@ function selectContainer(currentDiv) {
     firstTD = currentSelectedContainer.nextSibling;
     secondTD = firstTD.nextSibling;
     
-    console.log(firstTD);
+    if (debug===true) console.log(firstTD);
     var moveBtnB = firstTD.lastChild.previousElementSibling.previousElementSibling;
     var saveBtnB = firstTD.firstChild;
-    console.log(secondTD);
+    if (debug===true) console.log(secondTD);
     var moveBtnA = secondTD.lastChild.previousElementSibling.previousElementSibling;
     var saveBtnA = secondTD.firstChild;
 
@@ -380,9 +380,10 @@ function selectContainer(currentDiv) {
     saveBtnB.disabled = false;
 
 
-    console.log('currentDiv: ',currentDiv);
-    console.log("TIPRACK_ORIGIN['a']: ",TIPRACK_ORIGIN['a']);
-    console.log("TIPRACK_ORIGIN['b']: ",TIPRACK_ORIGIN['b']);
+    if (debug===true) {console.log('currentDiv: ',currentDiv);
+      console.log("TIPRACK_ORIGIN['a']: ",TIPRACK_ORIGIN['a']);
+      console.log("TIPRACK_ORIGIN['b']: ",TIPRACK_ORIGIN['b']);
+    }
     if(currentDiv.value === TIPRACK_ORIGIN['a']){
       var resetBtnA = secondTD.lastChild.previousElementSibling;
       resetBtnA.disabled = false;
@@ -514,7 +515,7 @@ var lineLimit = 500; // If this number is too big bad things happen
 var socketHandler = {
   'position' : (function(){
     return function (data) {
-      console.log(data);
+      if (debug===true) console.log(data);
       msg = data.string;
       try {
         var coordMessage = msg;
@@ -637,8 +638,10 @@ var socketHandler = {
   'containers' : function (data) {
     var blob = data;//JSON.parse(data);
     var newContainers = blob.containers;
-    console.log('newContainers...');
-    console.log(newContainers);
+    if (debug===true) {
+      console.log('newContainers...');
+      console.log(newContainers);
+    }
     if (newContainers) {
       saveContainers(newContainers);
     }
@@ -1212,7 +1215,7 @@ function step (axis, multiplyer) {
 /////////////////////////////////
 /////////////////////////////////
 
-function sendDebugCommand () {
+function senddebugCommand () {
   var text = document.getElementById('debugCommandInput').value;
 
   var msg = {

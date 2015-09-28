@@ -31,32 +31,34 @@
 */
 
 
-debug = true;
+cjf_debug = true;
 /////////////////////////////////
 /////////////////////////////////
 /////////////////////////////////
 
 function createRobotProtocol (protocol) { // 'protocol' is the human-readable json object
-
+  if(cjf_debug===true) console.log('createRobotProtocol called')
   /*
 
     1) create representation of wells (coordinates & current volume)
 
   */
 
+  if(cjf_debug===true) console.log('***  STARTING SECTION 1  *************************************')
+
   /////////
 
   // function for creating one of our virtual locations (wells)
 
   function createLiquidLocation (location) {
-
+    if(cjf_debug===true) console.log('createLiquidLocation called')
     location['current-liquid-volume'] = 0;
     location['current-liquid-offset'] = 0;
 
     /////////
 
     location.updateVolume = function (ingredientVolume) {
-
+      if(cjf_debug===true) console.log('location.updateVolume called')
       // then carry on as normal with linear calculation
       this['current-liquid-volume'] += ingredientVolume;
       var heightRatio = this['current-liquid-volume'] / this['total-liquid-volume'];
@@ -104,11 +106,13 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
 
   */
 
+  if(cjf_debug===true) console.log('***  STARTING SECTION 2  *************************************')
+
   for(var ingredientName in protocol.ingredients) {
     var ingredientPartsArray = protocol.ingredients[ingredientName];
 
     ingredientPartsArray.forEach(function (ingredientPart) {
-
+      if(cjf_debug===true) console.log('ingredientPartsArray.forEach anonymous function called')
       if(ingredientPart.container && _deck[ingredientPart.container]) {
         var allLocations = _deck[ingredientPart.container].locations;
         if(ingredientPart.location && allLocations[ingredientPart.location]) {
@@ -132,7 +136,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
   */
 
   var _pipettes = {};
-
+  if(cjf_debug===true) console.log('***  STARTING SECTION 3  *************************************')
   for(var toolName in protocol.head) {
     _pipettes[toolName] = JSON.parse(JSON.stringify(protocol.head[toolName]));
 
@@ -195,6 +199,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
       /////////
 
       _pipettes[toolName].pickupTip = function () {
+        if(cjf_debug===true) console.log('_pipettes['+toolName+'].pickupTip called')
 
         var myRacks = this['tip-racks'];
 
@@ -268,7 +273,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
             'container' : newTipContainerName
           });
         }
-
+        if(cjf_debug===true) console.log('moveArray: '+moveArray)
         return moveArray;
       };
 
@@ -281,7 +286,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
       /////////
 
       _pipettes[toolName].dropTip = function () {
-
+        if(cjf_debug===true) console.log('_pipettes['+toolName+'].dropTip called')
         var moveArray = [];
 
         // move to the trash location, and droptip
@@ -316,7 +321,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
         moveArray.push({
           'plunger' : 'droptip'
         });
-
+        if(cjf_debug===true) console.log('moveArray: '+moveArray)
         return moveArray;
       };
 
@@ -378,7 +383,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
       newInstruction.groups = [];
 
       _instructions[i].groups.forEach( function(_group, index) { // loop through each group
-
+        if(cjf_debug===true) console.log('_instructions['+i+'].groups.forEach anonymous function called')
         var newGroup;
 
         if(_group.transfer) {
@@ -418,7 +423,7 @@ var createPipetteGroup = {
   /////////
 
   'transfer' : function (theDeck, theTool, transferArray) {
-
+  if(cjf_debug===true) console.log('transfer called')
     var createdGroup = {
       'command': 'pipette',
       'axis': theTool.axis,
@@ -426,6 +431,7 @@ var createPipetteGroup = {
     };
 
     function _addMovements (_temp) {
+      if(cjf_debug===true) console.log('transfer._addMovements called')
       createdGroup.locations = createdGroup.locations.concat(_temp);
     }
 
@@ -463,7 +469,7 @@ var createPipetteGroup = {
   /////////
 
   'distribute' : function (theDeck, theTool, distributeGroup) {
-
+  if(cjf_debug===true) console.log('distribute called')
     var createdGroup = {
       'command': 'pipette',
       'axis': theTool.axis,
@@ -471,6 +477,7 @@ var createPipetteGroup = {
     };
 
     function _addMovements (_temp) {
+      if(cjf_debug===true) console.log('distribute._addMovements called')
       createdGroup.locations = createdGroup.locations.concat(_temp);
     }
 
@@ -491,12 +498,12 @@ var createPipetteGroup = {
 
     // always add a percentage onto distribute, to compensate for the curve when dispensing
     // defaults to 0%
-    if(debug===true) console.log('totalVolume(1): '+totalVolume);
+    if(cjf_debug===true) console.log('totalVolume(1): '+totalVolume);
     totalVolume += (totalVolume * theTool['distribute-percentage']);
 
     if(totalVolume>theTool.volume) totalVolume = Number(theTool.volume);
 
-    if(debug===true) console.log('totalVolume(2): '+totalVolume);
+    if(cjf_debug===true) console.log('totalVolume(2): '+totalVolume);
 
     var fromParams = JSON.parse(JSON.stringify(distributeGroup.from));
     fromParams.volume = totalVolume * -1; // negative because we're sucking up
@@ -529,7 +536,7 @@ var createPipetteGroup = {
   /////////
 
   'consolidate' : function (theDeck, theTool, consolidateGroup) {
-
+  if(cjf_debug===true) console.log('consolidate called')
     var createdGroup = {
       'command': 'pipette',
       'axis': theTool.axis,
@@ -537,6 +544,7 @@ var createPipetteGroup = {
     };
 
     function _addMovements (_temp) {
+      if(cjf_debug===true) console.log('consolidate._addMovements called')
       createdGroup.locations = createdGroup.locations.concat(_temp);
     }
 
@@ -579,7 +587,7 @@ var createPipetteGroup = {
   /////////
 
   'mix' : function (theDeck, theTool, mixArray) {
-
+    if(cjf_debug===true) console.log('mix called')
     var createdGroup = {
       'command': 'pipette',
       'axis': theTool.axis,
@@ -587,6 +595,7 @@ var createPipetteGroup = {
     };
 
     function _addMovements (_temp) {
+      if(cjf_debug===true) console.log('mix._addMovements called')
       createdGroup.locations = createdGroup.locations.concat(_temp);
     }
 
@@ -618,6 +627,7 @@ var createPipetteGroup = {
 /////////////////////////////////
 
 function makePipettingMotion (theDeck, theTool, thisParams, shouldDropPlunger) {
+  if(cjf_debug===true) console.log('makePipettingMotion called')
   var moveArray = [];
 
   // create the rainbow to the FROM location
@@ -722,7 +732,7 @@ function makePipettingMotion (theDeck, theTool, thisParams, shouldDropPlunger) {
     // if it's a mix command, got through each repetition
     // then reset this well's volume to it's orginal level
     if(thisParams.repetitions) {
-
+      if(cjf_debug===true) console.log('thisParams.repetitions: '+thisParams.repetitions)
       locationPos.updateVolume(Number(thisParams.volume * -1)); // undo the volume change we did above
 
       // then loop through the repetitions, moving the plunger each step
@@ -835,7 +845,7 @@ function makePipettingMotion (theDeck, theTool, thisParams, shouldDropPlunger) {
       });
     }
   }
-
+  if(cjf_debug===true) console.log('moveArray: '+moveArray)
   return moveArray;
 }
 
@@ -844,6 +854,7 @@ function makePipettingMotion (theDeck, theTool, thisParams, shouldDropPlunger) {
 /////////////////////////////////
 
 function getPercentage (thisVolume, theTool) {
+  if(cjf_debug===true) console.log('getPercentage called')
   var realVolume = Number(thisVolume);
   var absVolume = Math.abs(realVolume);
 

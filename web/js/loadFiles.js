@@ -1,3 +1,4 @@
+var lf_debug = false
 /////////////////////////////////
 //// GORDON'S ADDITIONS /////////
 /////////////////////////////////
@@ -242,16 +243,18 @@ function loadFile(e) {
 
           CURRENT_PROTOCOL = tempProtocol;
           for (var k in tempProtocol.head){
-            console.log('the k: ',k);
-            console.log('the head:')
-            console.log(tempProtocol.head)
+            if (lf_debug===true){
+              console.log('the k: ',k);
+              console.log('the head:')
+              console.log(tempProtocol.head)
+            }
             ax = tempProtocol.head[k].axis;
             if (tempProtocol.head[k]['tip-racks']){
-              console.log("there be tip-racks");
+              if (lf_debug===true)console.log("there be tip-racks");
               if (tempProtocol.head[k]['tip-racks'].length > 0){
-                console.log("and it be plural");
+                if (lf_debug===true)console.log("and it be plural");
                 TIPRACK_ORIGIN[ax] = tempProtocol.head[k]['tip-racks'][0].container;
-                console.log("TIPRACK_ORIGIN[",ax,"] = ",TIPRACK_ORIGIN[ax]);
+                if (lf_debug===true)console.log("TIPRACK_ORIGIN[",ax,"] = ",TIPRACK_ORIGIN[ax]);
               }
             }
             
@@ -409,8 +412,10 @@ function loadDefaultContainers() {
     try {
       var blob = JSON.parse(this.responseText);
       var newContainers = blob.containers;
-      console.log('newContainers...');
-      console.log(newContainers);
+      if (lf_debug===true){
+        console.log('newContainers...');
+        console.log(newContainers);
+      }
       if (newContainers) {
         saveContainers(newContainers);
       }
@@ -433,19 +438,21 @@ var labware_from_db  = {};
 
 function saveContainers(newContainers) {
   for(var n in newContainers) {
-    console.log('newContainer n = '+n);
+    if (lf_debug===true) console.log('newContainer n = '+n);
     var cont = newContainers[n];
     var stringedCont = undefined;
     try {
       stringedCont = JSON.stringify(cont);
-      console.log('stringedCont');
-      console.log(stringedCont)
+      if (lf_debug===true){
+        console.log('stringedCont');
+        console.log(stringedCont)
+      }
     }
     catch (error) {
       //
     }
     if(cont.locations && stringedCont) {
-      console.log('saving cont '+cont+' to labware_from_db');
+      if (lf_debug===true) console.log('saving cont '+cont+' to labware_from_db');
       labware_from_db[n] = stringedCont;
     }
   }
