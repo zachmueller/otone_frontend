@@ -1169,7 +1169,7 @@ function calibrateContainer (axis, containerName, depth) {
       'type' : 'calibrateContainer',
       'data' : {
         'axis' : axis,
-        'name' : containerName
+        'name' : containerName,
         'depth' : depth
       }
     };
