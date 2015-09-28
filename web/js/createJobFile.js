@@ -141,7 +141,8 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
   for(var toolName in protocol.head) {
     if(cjf_debug===true) console.log('toolName: '+toolName)
     _pipettes[toolName] = JSON.parse(JSON.stringify(protocol.head[toolName]));
-
+    console.log('JSON.stringify(protocol.head[',toolName,']): '+JSON.stringify(protocol.head[toolName]));
+    console.log('JSON.stringify(_pipettes['+toolName+']): '+JSON.stringify(_pipettes[toolName]));
     _pipettes[toolName]['current-plunger'] = 0;
 
     if(isNaN(_pipettes[toolName]['down-plunger-speed'])) _pipettes[toolName]['down-plunger-speed'] = 300;
@@ -188,6 +189,8 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
         if(labware_from_db[labwareName]) {
           // copy over all locations
           var _locations = JSON.parse(labware_from_db[labwareName]).locations;
+          console.log('labware_from_db[labwareName]: '+JSON.stringify(labware_from_db[labwareName]));
+          console.log('_locations: '+JSON.stringify(_locations));
           for(var locName in _locations) {
             _rackParams['clean-tips'].push(_locations[locName]);
           }
