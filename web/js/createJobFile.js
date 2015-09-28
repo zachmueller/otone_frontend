@@ -205,7 +205,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
         if(cjf_debug===true) console.log('_pipettes['+toolName+'].pickupTip called')
 
         var myRacks = this['tip-racks'];
-
+        print('myRacks: ',JSON.stringify(this['tip-racks']));
         this.justPickedUp = true;
 
         // pull out the first clean tip, in any of our racks
@@ -214,10 +214,13 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
         var newTipContainerName;
         for(var i=0;i<myRacks.length;i++) {
           if(myRacks[i]['clean-tips'].length) {
+            print('multi-channel: ',this['multi-channel']);
             var howManyTips = this['multi-channel'] ? 8 : 1;
             if(isNaN(howManyTips)) howManyTips = 1;
             newTipLocation = myRacks[i]['clean-tips'].splice(0,1)[0];
             newTipContainerName = myRacks[i].container;
+            print('newTipLocation: ',JSON.stringify(newTipLocation));
+            print('newTipContainerName: ',newTipContainerName);
             myRacks[i]['dirty-tips'].push(JSON.parse(JSON.stringify(newTipLocation)));
 
             // for when we're using a multi-channel, get rid of of the older tips
@@ -247,17 +250,17 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
         var moveArray = [];
 
         // now use the tip location, go over there, and grab the tip
-
+        print('pickupTip-->moveArray push 1')
         moveArray.push({
           'z' : 0
         });
 
         this['current-plunger'] = 0; // reset the plunger's current state
-
+        print('pickupTip-->moveArray push 2')
         moveArray.push({
           'plunger' : 'resting'
         });
-
+        print('pickupTip-->moveArray push 3')
         moveArray.push({
           'x' : newTipLocation.x,
           'y' : newTipLocation.y,
