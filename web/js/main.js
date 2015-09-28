@@ -474,7 +474,7 @@ function saveContainer (axis) {
   var depth = 0
 
   if(labware_from_db && labware_from_db[contName]) {
-    if 'depth' in labware_from_db[contName]{
+    if ('depth' in labware_from_db[contName]) {
       depth = labware_from_db[contName]['depth']
     }
   }
