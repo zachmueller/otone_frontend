@@ -216,8 +216,12 @@ function handleContainers (newContainers) {
       containerMenu.appendChild(tempRow);
     }
 
-    if(theContainerLocations.a[nameA].z < highestSpot) highestSpot = theContainerLocations.a[nameA].z;
-    if(theContainerLocations.b[nameA].z < highestSpot) highestSpot = theContainerLocations.b[nameA].z;
+    if(theContainerLocations.a[nameA].z != null){
+     if(theContainerLocations.a[nameA].z < highestSpot) highestSpot = theContainerLocations.a[nameA].z;
+    }
+    if(theContainerLocations.b[nameA].z != null){
+      if(theContainerLocations.b[nameA].z < highestSpot) highestSpot = theContainerLocations.b[nameA].z;
+    }
   }
   for(var name in theContainerLocations.b) {
 
@@ -295,15 +299,19 @@ function handleContainers (newContainers) {
       containerMenu.appendChild(tempRow);
     }
 
-    if(theContainerLocations.b[name].z < highestSpot){
-      highestSpot = theContainerLocations.b[name].z;
-      if(main_debug===true){
-        console.log('highestSpot('+name+'-b.2):'+highestSpot);
-        console.log('theContainerLocations.b['+name+'] = '+theContainerLocations.b[name].z);
+    if(theContainerLocations.b[name].z != null){
+      if(theContainerLocations.b[name].z < highestSpot){
+        highestSpot = theContainerLocations.b[name].z;
+        if(main_debug===true){
+          console.log('highestSpot('+name+'-b.2):'+highestSpot);
+          console.log('theContainerLocations.b['+name+'] = '+theContainerLocations.b[name].z);
+        }
       }
     }
 
-    if(theContainerLocations.b[name].z < highestSpot) highestSpot = theContainerLocations.b[name].z;
+    if(theContainerLocations.b[name].z != null){
+      if(theContainerLocations.b[name].z < highestSpot) highestSpot = theContainerLocations.b[name].z;
+    }
   }
 
 
