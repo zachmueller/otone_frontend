@@ -738,7 +738,7 @@ var timeSentJob = undefined;
 function sendMessage (msg) {
   if(main_debug===true) console.log('sendMessage('+msg+')');
   try{
-    console.log('msg: '+JSON.stringify(msg))
+    if(main_debug===true) console.log('msg: '+JSON.stringify(msg))
   } catch(e) {
 
   }
