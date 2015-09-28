@@ -471,16 +471,22 @@ function saveContainer (axis) {
   }
 
   
-  
+  var depth = 0
+
+  if(labware_from_db && labware_from_db[contName]) {
+    if 'depth' in labware_from_db[contName]{
+      depth = labware_from_db[contName]['depth']
+    }
+  }
 
   
   
 
-  calibrateContainer(axis, contName);
+  calibrateContainer(axis, contName, depth);
 
   setTimeout(function(){
     selectContainer(currentSelectedContainer);
-  },500);
+  },300);
 }
 
 /////////////////////////////////
@@ -1157,13 +1163,14 @@ function pickupTip(axis) {
 /////////////////////////////////
 /////////////////////////////////
 
-function calibrateContainer (axis, containerName) {
+function calibrateContainer (axis, containerName, depth) {
   if ('ab'.indexOf(axis)>=0) {
     var msg = {
       'type' : 'calibrateContainer',
       'data' : {
         'axis' : axis,
         'name' : containerName
+        'depth' : depth
       }
     };
 
