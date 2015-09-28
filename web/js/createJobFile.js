@@ -44,7 +44,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
 
   */
 
-  if(cjf_debug===true) console.log('***  STARTING SECTION 1  *************************************')
+  if(cjf_debug===true) console.log('***  STARTING SECTION 1  *************************************');
 
   /////////
 
@@ -106,7 +106,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
 
   */
 
-  if(cjf_debug===true) console.log('***  STARTING SECTION 2  *************************************')
+  if(cjf_debug===true) console.log('***  STARTING SECTION 2  *************************************');
 
   for(var ingredientName in protocol.ingredients) {
     var ingredientPartsArray = protocol.ingredients[ingredientName];
@@ -136,8 +136,10 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
   */
 
   var _pipettes = {};
-  if(cjf_debug===true) console.log('***  STARTING SECTION 3  *************************************')
+  if(cjf_debug===true) console.log('***  STARTING SECTION 3  *************************************');
+  if(cjf_debug===true) console.log('looping through protocol.head with toolName');
   for(var toolName in protocol.head) {
+    if(cjf_debug===true) console.log('toolName: '+toolName)
     _pipettes[toolName] = JSON.parse(JSON.stringify(protocol.head[toolName]));
 
     _pipettes[toolName]['current-plunger'] = 0;
@@ -170,11 +172,12 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
     }
 
     var _tipracks = _pipettes[toolName]['tip-racks'];
-
+    if(cjf_debug===true) console.log('_tipracks: '+JSON.stringify(_tipracks));
     if(_tipracks) {
 
+      if(cjf_debug===true) console.log('looping through tip-racks with _rack');
       for(var _rack in _tipracks) {
-
+        if(cjf_debug===true) console.log('_rack: '+_rack);
         var _rackParams = _tipracks[_rack];
         _rackParams['clean-tips'] = [];
         _rackParams['dirty-tips'] = [];
@@ -336,13 +339,17 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
     4) Make array of instructions, to hold commands and their individual move locations
 
   */
+
+  if(cjf_debug===true) console.log('***  STARTING SECTION 4  *************************************');
   
   var createdInstructions = []; // an instruction is for one specific tool
 
   var _instructions = protocol.instructions;
 
   // first make the plunger go up and down for each pipette being used
+  if(cjf_debug===true) console.log('looping through _pipettes with toolname');
   for(var toolname in _pipettes) {
+    if(cjf_debug===true) console.log('toolname: '+toolname);
     createdInstructions.push({
       'tool' : _pipettes[toolname].tool,
       'groups' : [
@@ -372,6 +379,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
   // then add all the instructions from the loaded protocol file
   // parsing each command, and mapping to locations on the deck
 
+  if(cjf_debug===true) console.log('looping through _instructions');
   for (var i=0;i<_instructions.length;i++) {
 
     var currentPipette = _pipettes[_instructions[i].tool];

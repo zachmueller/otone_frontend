@@ -216,11 +216,11 @@ function handleContainers (newContainers) {
       containerMenu.appendChild(tempRow);
     }
 
-    console.log('theContainerLocations.a[nameA].z: '+theContainerLocations.a[nameA].z)
+    console.log('theContainerLocations.a['+nameA+'].z: '+theContainerLocations.a[nameA].z)
     if(theContainerLocations.a[nameA].z != null){
      if(theContainerLocations.a[nameA].z < highestSpot) highestSpot = theContainerLocations.a[nameA].z;
     }
-    console.log('theContainerLocations.b[nameA].z: '+theContainerLocations.b[nameA].z)
+    console.log('theContainerLocations.b['+nameA+'].z: '+theContainerLocations.b[nameA].z)
     if(theContainerLocations.b[nameA].z != null){
       if(theContainerLocations.b[nameA].z < highestSpot) highestSpot = theContainerLocations.b[nameA].z;
     }
@@ -301,7 +301,7 @@ function handleContainers (newContainers) {
       containerMenu.appendChild(tempRow);
     }
 
-    console.log('theContainerLocations.b[name].z: '+theContainerLocations.b[name].z)
+    console.log('theContainerLocations.b['+name+'].z: '+theContainerLocations.b[name].z)
     if(theContainerLocations.b[name].z != null){
       if(theContainerLocations.b[name].z < highestSpot){
         highestSpot = theContainerLocations.b[name].z;
@@ -312,7 +312,7 @@ function handleContainers (newContainers) {
       }
     }
 
-    console.log('theContainerLocations.b[name].z: '+theContainerLocations.b[name].z)
+    console.log('theContainerLocations.b['+name+'].z: '+theContainerLocations.b[name].z)
     if(theContainerLocations.b[name].z != null){
       if(theContainerLocations.b[name].z < highestSpot) highestSpot = theContainerLocations.b[name].z;
     }
