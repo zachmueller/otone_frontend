@@ -273,7 +273,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
             'container' : newTipContainerName
           });
         }
-        if(cjf_debug===true) console.log('moveArray: '+moveArray)
+        if(cjf_debug===true) console.log('moveArray: '+JSON.stringify(moveArray))
         return moveArray;
       };
 
@@ -321,7 +321,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
         moveArray.push({
           'plunger' : 'droptip'
         });
-        if(cjf_debug===true) console.log('moveArray: '+moveArray)
+        if(cjf_debug===true) console.log('moveArray: '+JSON.stringify(moveArray))
         return moveArray;
       };
 
@@ -407,7 +407,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
 
     createdInstructions.push(newInstruction);
   }
-
+  if(cjf_debug) console.log('createdInstructions: '+JSON.stringify(createdInstructions))
   return createdInstructions;
 
 }
@@ -460,7 +460,7 @@ var createPipetteGroup = {
 
     var dropArray = theTool.dropTip(); // DROP THE CURRENT TIP AT THE END OF EACH GROUP
     _addMovements(dropArray);
-
+    if(cjf_debug) console.log('transfer.createdGroup: '+JSON.stringify(createdGroup))
     return createdGroup;
   },
 
@@ -528,6 +528,7 @@ var createPipetteGroup = {
     var dropArray = theTool.dropTip(); // DROP THE CURRENT TIP AT THE END OF EACH GROUP
     _addMovements(dropArray);
 
+    if(cjf_debug) console.log('distribute.createdGroup: '+JSON.stringify(createdGroup))
     return createdGroup;
   },
 
@@ -578,7 +579,7 @@ var createPipetteGroup = {
 
     var dropArray = theTool.dropTip(); // DROP THE CURRENT TIP AT THE END OF EACH GROUP
     _addMovements(dropArray);
-
+    if(cjf_debug===True) console.log('consolidate.createdGroup: '+JSON.stringify(createdGroup))
     return createdGroup;
   },
 
@@ -612,7 +613,7 @@ var createPipetteGroup = {
 
     var dropArray = theTool.dropTip(); // DROP THE CURRENT TIP AT THE END OF EACH GROUP
     _addMovements(dropArray);
-
+    if(cjf_debug===true) console.log('mix.createdGroup: '+JSON.stringify(createdGroup))
     return createdGroup;
   }
 
@@ -845,7 +846,7 @@ function makePipettingMotion (theDeck, theTool, thisParams, shouldDropPlunger) {
       });
     }
   }
-  if(cjf_debug===true) console.log('moveArray: '+moveArray)
+  if(cjf_debug===true) console.log('moveArray: '+JSON.stringify(moveArray))
   return moveArray;
 }
 
@@ -880,7 +881,7 @@ function getPercentage (thisVolume, theTool) {
 
   absVolume *= amountToScale;
   if(realVolume<0) absVolume *= -1;
-
+  if(cjf_debug===true) console.log('percentage: '+absVolume/theTool.volume)
   return absVolume / theTool.volume;
 }
 
