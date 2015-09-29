@@ -494,9 +494,7 @@
 											<input type="file" accept=".json" name="cLibrary" onchange="loadLibrary(this);"></input>
 										</form>
 										<form action="/" method="post">
-											<input type="text" onclick="this.select();" value="[empty]" name="libraryFilename"></input>
-											<span>. json</span>
-											<button disabled="" type="submit" onclick="saveLibrary()">Save</button>
+											<button type="submit" onclick="saveLibrary()">Save</button>
 										</form>
 									</section>
 								</div>
@@ -506,9 +504,7 @@
 												<input type="file" accept=".json" name="cPositions" onchange="loadPositions(this);"></input>
 											</form>
 											<form action="/" method="post">
-												<input type="text" onclick="this.select();" value="[empty]" name="positionsFilename"></input>
-												<span>. json</span>
-												<button disabled="" type="submit" onclick="savePositions()">Save</button>
+												<button type="submit" onclick="savePositions()">Save</button>
 											</form>
 										</section>
 								</div>
