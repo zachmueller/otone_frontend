@@ -1510,7 +1510,7 @@ function saveLibrary(){
 
     var savefilename = 'containers' + '_' + dateString + '.json';
 
-    var blob = new Blob( [ JSON.stringify(labware_from_db, undefined, 2) ], {type: "text/json;charset=utf-8"} );
+    var blob = new Blob( [ labware_from_db ], {type: "text/json;charset=utf-8"} );
 
     var shouldSave = confirm('Save container library to disk?');
 
