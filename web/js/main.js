@@ -1508,7 +1508,7 @@ function saveLibrary(){
     dateString += ':';
     dateString += d.getSeconds();
 
-    var savefilename = containers + '_' + dateString + '.json';
+    var savefilename = 'containers' + '_' + dateString + '.json';
 
     var blob = new Blob( [ JSON.stringify(labware_from_db, undefined, 2) ], {type: "text/json;charset=utf-8"} );
 
@@ -1516,6 +1516,8 @@ function saveLibrary(){
 
     if(shouldSave) saveAs(blob, savefilename);
 
+  }else{
+    alert('Problem saving container library');
   }
 }
 
@@ -1537,7 +1539,7 @@ function savePositions(){
     dateString += ':';
     dateString += d.getSeconds();
 
-    var savefilename = containers + '_' + dateString + '.json';
+    var savefilename = 'positions' + '_' + dateString + '.json';
 
     var blob = new Blob( [ JSON.stringify(theContainerLocations, undefined, 2) ], {type: "text/json;charset=utf-8"} );
 
@@ -1545,6 +1547,8 @@ function savePositions(){
 
     if(shouldSave) saveAs(blob, savefilename);
 
+  } else {
+    alert('Problem saving container positions');
   }
 
 }
