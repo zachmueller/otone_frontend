@@ -1461,6 +1461,7 @@ function loadLibrary(input){
   var file = input;
   if(file.files.length)
   {
+    var reader = new FileReader();
     reader.onload = function(e)
     {
       try{
@@ -1486,7 +1487,7 @@ function loadPositions(input){
   var file = input;
   if(file.files.length)
   {
-    
+    var reader = new FileReader();
     reader.onload = function(e)
     {
       try{
