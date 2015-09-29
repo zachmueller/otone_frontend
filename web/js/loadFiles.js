@@ -437,13 +437,13 @@ function loadDefaultContainers() {
 
 var labware_from_db  = {};
 
-function saveContainers(newContainers) {
+function saveContainers(newContainers) {  //newContainers was previously JSON.parse()'d
   for(var n in newContainers) {
     if (lf_debug===true) console.log('newContainer n = '+n);
     var cont = newContainers[n];
     var stringedCont = undefined;
     try {
-      stringedCont = JSON.stringify(JSON.parse(cont),undefined,2);
+      stringedCont = JSON.stringify(cont,undefined,2);
       //if (lf_debug===true){
         console.log('stringedCont');
         console.log(stringedCont)
