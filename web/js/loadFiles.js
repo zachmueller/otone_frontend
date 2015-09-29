@@ -444,13 +444,14 @@ function saveContainers(newContainers) {
     var stringedCont = undefined;
     try {
       stringedCont = JSON.stringify(JSON.parse(cont),undefined,2);
-      if (lf_debug===true){
+      //if (lf_debug===true){
         console.log('stringedCont');
         console.log(stringedCont)
-      }
+      //}
     }
     catch (error) {
       //
+      console.log(error.message)
     }
     if(cont.locations && stringedCont) {
       if (lf_debug===true) console.log('saving cont '+cont+' to labware_from_db');
