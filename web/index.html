@@ -487,6 +487,35 @@
 							<!--<button class="btn tron-blue" id="relativeCoordsButton" onclick="relativeCoords()">Reset Coordinates</button>-->
 							<div class="row">
 							<div class="col-md-12">
+								<div class="col-xs-4 col-sm-4 col-md-4"><h4></h4></div>
+								<div class="col-xs-4 col-sm-4 col-md-4"><h4>Labware Library</h4>
+									<section id="InputLibrary">
+										<form enctype="multipart/form-data" action="/" method="post">
+											<input type="file" accept=".json" name="c_library"></input>
+										</form>
+										<form action="/" method="post">
+											<input type="text" onclick="this.select();" value="[empty]" name="c_filename"></input>
+											<span>. json</span>
+											<button disabled="" type="submit" onclick="cFileSaved()">Save</button>
+										</form>
+									</section>
+								</div>
+								<div class="col-xs-4 col-sm-4 col-md-4"><h4>Saved Positions</h4>
+									<section id="InputPositions">
+											<form enctype="multipart/form-data" action="/" method="post">
+												<input type="file" accept=".json" name="c_positions"></input>
+											</form>
+											<form action="/" method="post">
+												<input type="text" onclick="this.select();" value="[empty]" name="p_filename"></input>
+												<span>. json</span>
+												<button disabled="" type="submit" onclick="pFileSaved()">Save</button>
+											</form>
+										</section>
+								</div>
+							</div>
+							</div>
+							<div class="row">
+							<div class="col-md-12">
 										<div class="col-xs-4 col-sm-4 col-md-4 "><h4>Labware</h4></div>
 										<div class="col-xs-4 col-sm-4 col-md-4 "><h4 class="pipette-Left">Left</h4>
 											X: <code id="containerpos_x_b">0</code>&nbsp;
