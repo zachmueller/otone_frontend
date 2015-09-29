@@ -443,7 +443,7 @@ function saveContainers(newContainers) {
     var cont = newContainers[n];
     var stringedCont = undefined;
     try {
-      stringedCont = JSON.stringify(cont);
+      stringedCont = JSON.stringify(JSON.parse(cont),undefined,2);
       if (lf_debug===true){
         console.log('stringedCont');
         console.log(stringedCont)
