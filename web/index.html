@@ -491,24 +491,24 @@
 								<div class="col-xs-4 col-sm-4 col-md-4"><h4>Labware Library</h4>
 									<section id="InputLibrary">
 										<form enctype="multipart/form-data" action="/" method="post">
-											<input type="file" accept=".json" name="c_library"></input>
+											<input type="file" accept=".json" name="cLibrary" onchange="loadLibrary(this);"></input>
 										</form>
 										<form action="/" method="post">
-											<input type="text" onclick="this.select();" value="[empty]" name="c_filename"></input>
+											<input type="text" onclick="this.select();" value="[empty]" name="libraryFilename"></input>
 											<span>. json</span>
-											<button disabled="" type="submit" onclick="cFileSaved()">Save</button>
+											<button disabled="" type="submit" onclick="saveLibrary()">Save</button>
 										</form>
 									</section>
 								</div>
 								<div class="col-xs-4 col-sm-4 col-md-4"><h4>Saved Positions</h4>
 									<section id="InputPositions">
 											<form enctype="multipart/form-data" action="/" method="post">
-												<input type="file" accept=".json" name="c_positions"></input>
+												<input type="file" accept=".json" name="cPositions" onchange="loadPositions(this);"></input>
 											</form>
 											<form action="/" method="post">
-												<input type="text" onclick="this.select();" value="[empty]" name="p_filename"></input>
+												<input type="text" onclick="this.select();" value="[empty]" name="positionsFilename"></input>
 												<span>. json</span>
-												<button disabled="" type="submit" onclick="pFileSaved()">Save</button>
+												<button disabled="" type="submit" onclick="savePositions()">Save</button>
 											</form>
 										</section>
 								</div>
