@@ -1461,16 +1461,22 @@ function loadLibrary(input){
   var file = input;
   if(file.files.length)
   {
-    try{
-      alert(file.files[0]);
-      var blob = JSON.parse(file.files[0]);
-      var msg = {
-        'type':'saveContainerLibrary',
-        'data': blob
+    reader.onload = function(e)
+    {
+      try{
+        var blob = JSON.parse(e.target.result);
+        var msg = {
+          'type':'saveContainersLibrary',
+          'data': blob
+        }
+        sendMessage(msg);
+      } catch(err){
+        alert('Error: \r\n'+err.message);
       }
-    } catch(err){
-      alert('Error: \r\n'+err.message);
-    }
+      
+    };
+    
+    reader.readAsBinaryString(file.files[0]);
 
   }
 }
@@ -1480,16 +1486,24 @@ function loadPositions(input){
   var file = input;
   if(file.files.length)
   {
-    try{
-      alert(file.files[0]);
-      var blob = JSON.parse(file.files[0]);
-      var msg = {
-        'type':'saveContainerPositions',
-        'data': blob
+    
+    reader.onload = function(e)
+    {
+      try{
+        var blob = JSON.parse(e.target.result);
+        var msg = {
+          'type':'saveContainerPositions',
+          'data': blob
+        }
+        sendMessage(msg);
+      } catch(err){
+        alert('Error: \r\n'+err.message);
       }
-    } catch(err){
-      alert('Error: \r\n'+err.message);
-    }
+      
+    };
+    
+    reader.readAsBinaryString(file.files[0]);
+
   }
 }
 
