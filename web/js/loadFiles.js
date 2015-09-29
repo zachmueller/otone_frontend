@@ -440,10 +440,14 @@ var labware_from_db  = {};
 function saveContainers(newContainers) {  //newContainers was previously JSON.parse()'d
   for(var n in newContainers) {
     if (lf_debug===true) console.log('newContainer n = '+n);
-    var cont = newContainers[n];
+    //var cont = 
+    labware_from_db[n] = newContainers[n];
+    
+    /* what's the deal with stringedCont? doesn't appear to be needed
     var stringedCont = undefined;
+    
     try {
-      stringedCont = JSON.stringify(cont,undefined,2);
+      stringedCont = cont;
       //if (lf_debug===true){
         console.log('stringedCont');
         console.log(stringedCont)
@@ -456,7 +460,7 @@ function saveContainers(newContainers) {  //newContainers was previously JSON.pa
     if(cont.locations && stringedCont) {
       if (lf_debug===true) console.log('saving cont '+cont+' to labware_from_db');
       labware_from_db[n] = stringedCont;
-    }
+    }*/
   }
 }
 

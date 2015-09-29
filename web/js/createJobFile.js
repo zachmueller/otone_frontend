@@ -84,7 +84,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
 
     if(labware_from_db && labware_from_db[labwareName]) {
 
-      _container.locations = JSON.parse(labware_from_db [labwareName]).locations;
+      _container.locations = labware_from_db[labwareName].locations; // should've been parsed already JSON.parse(
 
       if(_container.locations) {
 
@@ -165,7 +165,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
     if(_trashcontainerName && _deck[_trashcontainerName]){
       var trashLabware = _deck[_trashcontainerName].labware;
       if(trashLabware) {
-        _pipettes[toolName]['trash-container'].locations = JSON.parse(labware_from_db[trashLabware]).locations;
+        _pipettes[toolName]['trash-container'].locations = labware_from_db[trashLabware].locations; // should've been parsed already JSON.parse(
       }
     }
     else {
@@ -188,7 +188,7 @@ function createRobotProtocol (protocol) { // 'protocol' is the human-readable js
 
         if(labware_from_db[labwareName]) {
           // copy over all locations
-          var _locations = JSON.parse(labware_from_db[labwareName]).locations;
+          var _locations = labware_from_db[labwareName].locations;  //should have been parsed already JSON.parse(
           console.log('labware_from_db[labwareName]: '+JSON.stringify(labware_from_db[labwareName]));
           console.log('_locations: '+JSON.stringify(_locations));
           for(var locName in _locations) {
