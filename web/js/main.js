@@ -1462,6 +1462,7 @@ function loadLibrary(input){
   if(file.files.length)
   {
     try{
+      alert(file.files[0]);
       var blob = JSON.parse(file.files[0]);
       var msg = {
         'type':'saveContainerLibrary',
@@ -1480,6 +1481,7 @@ function loadPositions(input){
   if(file.files.length)
   {
     try{
+      alert(file.files[0]);
       var blob = JSON.parse(file.files[0]);
       var msg = {
         'type':'saveContainerPositions',
