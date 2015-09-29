@@ -4,7 +4,7 @@
 
 var globalConnection;
 var robotStatus = false;
-var main_debug = false;
+var main_debug = true;
 var verbose = false;
 var str_last = "";
 
@@ -1517,7 +1517,7 @@ function saveLibrary(){
     if(shouldSave) saveAs(blob, savefilename);
 
   }else{
-    alert('Problem saving container library');
+    alert('Problem saving containers library');
   }
 }
 
