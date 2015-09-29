@@ -411,6 +411,7 @@ function loadDefaultContainers() {
   function onContainers () {
     try {
       var blob = JSON.parse(this.responseText);
+      console.log('blob: '+blob);
       var newContainers = blob.containers;
       if (lf_debug===true){
         console.log('newContainers...');
@@ -425,7 +426,7 @@ function loadDefaultContainers() {
     }
   }
 
-    var containersFilepath = './data/containers.json';
+  var containersFilepath = './data/containers.json';
 
   getAJAX(containersFilepath,onContainers);
 }
@@ -463,12 +464,10 @@ function saveContainers(newContainers) {
 ////////
 
 function getAJAX(filepath,callback) {
+  console.log('getAJAX called...');
   var oReq = new XMLHttpRequest();
   oReq.onload = callback;
   oReq.open("get", filepath, true);
   oReq.send();
 }
 
-/////////////////////////////////
-/////////////////////////////////
-/////////////////////////////////
