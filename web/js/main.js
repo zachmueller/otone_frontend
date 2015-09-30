@@ -1480,6 +1480,7 @@ function loadLibrary(input){
     reader.readAsBinaryString(file.files[0]);
 
   }
+  input.getParentElement().reset();
 }
 
 
@@ -1506,6 +1507,7 @@ function loadPositions(input){
     reader.readAsBinaryString(file.files[0]);
 
   }
+  input.getParentElement().reset();
 }
 
 function saveLibrary(){
