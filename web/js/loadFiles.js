@@ -417,11 +417,16 @@ function createAndSend () {
           'data' : robotProtocol
         }
 
+        var newJobMsg = {
+          'theProtocol':JSON.stringify(CURRENT_PROTOCOL,undefined,2)
+        }
+
         var shouldRun = confirm('Send file to be run?');
 
         if(shouldRun) {
           timeSentJob = new Date().getTime();
-          sendMessage(jobMsg);
+          //sendMessage(jobMsg);
+          sendMessage(newJobMsg);
         }
         else {
           var shouldInfinity = confirm('Send file to be run FOR INFINITY?!?!?!?!?!');
