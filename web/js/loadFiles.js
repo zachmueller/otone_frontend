@@ -418,7 +418,8 @@ function createAndSend () {
         }
 
         var newJobMsg = {
-          'theProtocol':JSON.stringify(CURRENT_PROTOCOL,undefined,2)
+          'type':'theProtocol',
+	  'data':JSON.stringify(CURRENT_PROTOCOL,undefined,2)
         }
 
         var shouldRun = confirm('Send file to be run?');
