@@ -698,7 +698,7 @@ var socketHandler = {
     alert(data);
   },
   'delay' : function(data) {
-    var msg = 'Delaying, seconds remaining: '+data
+    var msg = 'Delaying, seconds remaining: '+data;
     setStatus(msg, 'orange');
   }
 };
