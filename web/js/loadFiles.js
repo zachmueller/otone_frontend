@@ -269,7 +269,7 @@ function loadFile(e) {
         setPipetteNames(tempProtocol); // set the names of the pipettes in the container table
         //if we find the info generate html elements
         if(tempProtocol.deck && tempProtocol.head && tempProtocol.instructions && tempProtocol.ingredients) {
-
+          console.log('loading instructions file...');
           document.getElementById('runButton').disabled = false;
           document.getElementById('runButton').classList.add('tron-red');
 
@@ -313,6 +313,9 @@ function loadFile(e) {
           }else if(!tempProtocol.info){
             document.getElementById('infoDesc').innerHTML="";
           }
+        }
+        else{
+          console.log('something went wrong loading instructions file');
         }
       }
       else { // if the files messed up, current_protocol is undefined
