@@ -83,26 +83,26 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row">	
 		<div class="col-xs-4 col-sm-4  col-md-4  col-lg-4 ">
-		<div class="UI-block center-block">
-			<span style="padding-left:10px;padding-right:10px;">Home:</span>
-			<button type="button" class="btn tron-white" onclick="home()">ALL</button>
-			<button type="button" class="btn tron-white" onclick="home({x:true})">X</button>
-			<button type="button" class="btn tron-white" onclick="home({y:true})">Y</button>
-			<button type="button" class="btn tron-white" onclick="home({z:true})">Z</button>
-			<button type="button" class="btn tron-white" onclick="home({a:true})">A</button>
-			<button type="button" class="btn tron-white" onclick="home({b:true})">B</button>
-		</div>
+			<div class="UI-block center-block">
+				<span style="padding-left:10px;padding-right:10px;">Home:</span>
+				<button type="button" class="btn tron-white" onclick="home()">ALL</button>
+				<button type="button" class="btn tron-white" onclick="home({x:true})">X</button>
+				<button type="button" class="btn tron-white" onclick="home({y:true})">Y</button>
+				<button type="button" class="btn tron-white" onclick="home({z:true})">Z</button>
+				<button type="button" class="btn tron-white" onclick="home({a:true})">A</button>
+				<button type="button" class="btn tron-white" onclick="home({b:true})">B</button>
+			</div>
 		</div>
 		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 			<ul class="nav nav-tabs ">
 				<li class="active" id="deckLink"><a href="#" onclick="changeTab('deck');">Deck</a></li>
 				<li id="pipetteLink"><a href="#" onclick="changeTab('pipette');">Pipette</a></li>
+				<li id="containersLink"><a href="#" onclick="changeTab('containers');">Containers</a></li>
 				<li id="configLink"><a href="#" onclick="changeTab('config');">Config</a></li>
 			</ul>
 		</div>
-
 	</div>
 	<div id="pipette_container" style="display:none">
 		<div class="row">
@@ -249,76 +249,7 @@
 
 						  </div>
 						</div>
-<!--
-					<img src="./images/plunger_labels.png" class="plunger-label" />
-					<div style="display:inline-block;">
-						<div style="height:21px"></div>
-						<div class="btn-group btn-group-sm">
-							<button type="button" class="btn tron-blue" onclick="movePipette('a','top')">A-Top</button>
-							<button type="button" class="btn dropdown-toggle tron-blue" data-toggle="dropdown" aria-expanded="false">
-								<span class="caret"></span>
-								<span class="sr-only"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#" onclick="calibrate('a','top')">Overwrite A-Top</a></li>
-							</ul>
-						</div>
-						<br /><br />
-						<div class="btn-group btn-group-sm">
-							<button type="button" class="btn tron-blue" onclick="movePipette('a','blowout')">A-Blowout</button>
-							<button type="button" class="btn dropdown-toggle tron-blue" data-toggle="dropdown" aria-expanded="false">
-								<span class="caret"></span>
-								<span class="sr-only"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#" onclick="calibrate('a','blowout')">Overwrite A-Blowout</a></li>
-							</ul>
-						</div>
-						<br /><br />
-						<div class="btn-group btn-group-sm">
-							<button type="button" class="btn tron-blue" onclick="movePipette('a','droptip')">A-Droptip</button>
-							<button type="button" class="btn dropdown-toggle tron-blue" data-toggle="dropdown" aria-expanded="false">
-								<span class="caret"></span>
-								<span class="sr-only"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#" onclick="calibrate('a','droptip')">Overwrite A-Droptip</a></li>
-							</ul>
-						</div>
-					</div>
-					<div style="display:inline-block">
-						<div class="btn-group btn-group-sm">
-							<button type="button" class="btn tron-black" onclick="movePipette('b','top')">B-Top</button>
-							<button type="button" class="btn dropdown-toggle tron-black" data-toggle="dropdown" aria-expanded="false">
-								<span class="caret"></span>
-								<span class="sr-only"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#" onclick="calibrate('b','top')">Overwrite B-Top</a></li>
-							</ul>
-						</div>
-						<br /><br />
-						<div class="btn-group btn-group-sm">
-							<button type="button" class="btn tron-black" onclick="movePipette('b','blowout')">B-Blowout</button>
-							<button type="button" class="btn dropdown-toggle tron-black" data-toggle="dropdown" aria-expanded="false">
-								<span class="caret"></span>
-								<span class="sr-only"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#" onclick="calibrate('b','blowout')">Overwrite B-Blowout</a></li>
-							</ul>
-						</div>
-						<br /><br />
-						<div class="btn-group btn-group-sm">
-							<button type="button" class="btn tron-black" onclick="movePipette('b','droptip')">B-Droptip</button>
-							<button type="button" class="btn dropdown-toggle tron-black" data-toggle="dropdown" aria-expanded="false">
-								<span class="caret"></span>
-								<span class="sr-only"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#" onclick="calibrate('b','droptip')">Overwrite B-Droptip</a></li>
-							</ul>
-						</div>-->
+
 					</div>
 				</div>
 			</div>
@@ -546,6 +477,15 @@
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="containers_container" style="display:none">
+			<div class="row">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<div class="UI-block center-block">
+						<h3 class="UI-Title" class="UI-Title">Containers</h3>
 					</div>
 				</div>
 			</div>
