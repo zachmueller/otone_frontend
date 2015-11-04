@@ -700,6 +700,10 @@ var socketHandler = {
   'delay' : function(data) {
     var msg = 'Delaying, seconds remaining: '+data;
     setStatus(msg, 'orange');
+  },
+  'backend_version' : function(data) {
+    var msg = 'Backend: '+data;
+    setBackendVersion(msg, 'black');
   }
 };
 
@@ -734,6 +738,13 @@ function setStatus (string,color) {
   if (string) {
     document.getElementById('status').innerHTML = string;
     document.getElementById('status').style.color = color;
+  }
+}
+
+function setBackendVersion (string, color) {
+  if (string) {
+    document.getElementById('backend_version').innerHTML = string;
+    document.getElementById('backend_version').style.color = color;
   }
 }
 
