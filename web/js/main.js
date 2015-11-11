@@ -612,9 +612,10 @@ var socketHandler = {
     var newContainers = blob.containers;
     console.log('newContainers...');
     console.log(newContainers);
-    if (newContainers) {
-      saveContainers(newContainers);
-    }
+    //if (newContainers) {
+    //  saveContainers(newContainers);
+    //}
+
   },
   'containerLocations' : function (data) {
     handleContainers(data);
@@ -1300,7 +1301,8 @@ function restart(){
 /////////////////////////////////
 
 function update(data){
-  setStatus('updating '+data+'...','blue');
+  //setStatus('updating '+data+'...','blue');
+  setStatus('updating... please Reboot when done','blue')
   var msg = {
     'type' : 'update',
     'data' : data

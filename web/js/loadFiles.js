@@ -376,6 +376,7 @@ function createAndSend () {
     if(throwError) {
       alert('Please calibrate pipette volumes before running');
     }
+    /*
     else {
 
       try {
@@ -444,6 +445,7 @@ function createAndSend () {
         }
       }
     }
+    */
   }
 }
 
