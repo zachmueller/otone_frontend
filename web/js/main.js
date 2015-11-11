@@ -1347,19 +1347,25 @@ function checkConnection () {
 /////////////////////////////////
 
 function enableUpdateButtons() {
+  /*
   document.getElementById('updateAllButton').disabled=false
   document.getElementById('updateFirmwareButton').disabled=false
   document.getElementById('updateFrontendButton').disabled=false
   document.getElementById('updateBackendButton').disabled=false
   document.getElementById('updateScriptsButton').disabled=false
+  */
+  document.getElementById('updateNewButton').disabled=false
 }
 
 function disableUpdateButtons() {
+  /*
   document.getElementById('updateAllButton').disabled=true
   document.getElementById('updateFirmwareButton').disabled=true
   document.getElementById('updateFrontendButton').disabled=true
   document.getElementById('updateBackendButton').disabled=true
   document.getElementById('updateScriptsButton').disabled=true
+  */
+  document.getElementById('updateNewButton').disabled=false
 }
 
 function toggleWiFiMenu() {
