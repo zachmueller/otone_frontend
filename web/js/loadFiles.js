@@ -147,27 +147,27 @@ function setPipetteContainers(inputJSON, pipettes){ // blanks out containers bas
     if(pipettes["Left"] != false){ // pipette exists
       if(!(name in containerUsage[pipettes["Left"]])) { // containerUsage does not contain this key for this pipette
         console.log('not found LEFT!');
-        rowBlocks[1].children[0].className = "btn btn-sm tron-yellow b"; // style.display 'none'
-        rowBlocks[1].children[1].className = "btn btn-sm tron-yellow b";
-        rowBlocks[1].children[2].className = "btn btn-sm tron-yellow b";
+        rowBlocks[1].children[0].className = "btn btn-sm tron-brown b"; // style.display 'none'
+        rowBlocks[1].children[1].className = "btn btn-sm tron-brown b";
+        rowBlocks[1].children[2].className = "btn btn-sm tron-brown b";
       }
     } else {
-      rowBlocks[1].children[0].className = "btn btn-sm tron-yellow b";
-      rowBlocks[1].children[1].className = "btn btn-sm tron-yellow b";
-      rowBlocks[1].children[2].className = "btn btn-sm tron-yellow b";
+      rowBlocks[1].children[0].className = "btn btn-sm tron-brown b";
+      rowBlocks[1].children[1].className = "btn btn-sm tron-brown b";
+      rowBlocks[1].children[2].className = "btn btn-sm tron-brown b";
     }  
     
     if(pipettes["Center"] != false){ // pipette exists
       if(!(name in containerUsage[pipettes["Center"]])) { // containerUsage does not contain this key for this pipette
         console.log('not found CENTER!');
-        rowBlocks[2].children[0].className = "btn btn-sm tron-green a"; // style.display 'none'
-        rowBlocks[2].children[1].className = "btn btn-sm tron-green a";
-        rowBlocks[2].children[2].className = "btn btn-sm tron-green a";
+        rowBlocks[2].children[0].className = "btn btn-sm tron-violet a"; // style.display 'none'
+        rowBlocks[2].children[1].className = "btn btn-sm tron-violet a";
+        rowBlocks[2].children[2].className = "btn btn-sm tron-violet a";
       }
     } else {
-      rowBlocks[2].children[0].className = "btn btn-sm tron-green a";
-      rowBlocks[2].children[1].className = "btn btn-sm tron-green a";
-      rowBlocks[2].children[2].className = "btn btn-sm tron-green a";
+      rowBlocks[2].children[0].className = "btn btn-sm tron-violet a";
+      rowBlocks[2].children[1].className = "btn btn-sm tron-violet a";
+      rowBlocks[2].children[2].className = "btn btn-sm tron-violet a";
     } 
 
   } 

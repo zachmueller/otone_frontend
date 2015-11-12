@@ -131,24 +131,24 @@ code {
 	box-shadow: 1px 1px 1px #888888;
 }
 
-.tron-yellow {
-	background-color: #aaa;
+.tron-brown {
+	background-color: #663300;
 	color:#fdfdfd;
 }
 
-.tron-yellow:hover, .tron-yellow:active, .tron-yellow:focus {
-	color:#ffff00;
+.tron-brown:hover, .tron-yellow:active, .tron-yellow:focus {
+	color:#663300;
 	/*font-weight: bold;*/
 	box-shadow: 1px 1px 1px #888888;
 }
 
-.tron-green {
-	background-color: #66ff33;
+.tron-violet {
+	background-color: #990099;
 	color:#fdfdfd;
 }
 
-.tron-green:hover, .tron-green:active, .tron-green:focus {
-	color:#fdfdfd;
+.tron-violet:hover, .tron-green:active, .tron-green:focus {
+	color:#990099;
 	/*font-weight: bold;*/
 	box-shadow: 1px 1px 1px #888888;
 }
