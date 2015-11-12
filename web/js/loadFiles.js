@@ -147,27 +147,27 @@ function setPipetteContainers(inputJSON, pipettes){ // blanks out containers bas
     if(pipettes["Left"] != false){ // pipette exists
       if(!(name in containerUsage[pipettes["Left"]])) { // containerUsage does not contain this key for this pipette
         console.log('not found LEFT!');
-        rowBlocks[1].children[0].style.display = 'none';
-        rowBlocks[1].children[1].style.display = 'none';
-        rowBlocks[1].children[2].style.display = 'none';
+        rowBlocks[1].children[0].style.color = "yellow"; // display 'none'
+        rowBlocks[1].children[1].style.color = "yellow";
+        rowBlocks[1].children[2].style.color = "yellow";
       }
     } else {
-      rowBlocks[1].children[0].style.display = 'none';
-      rowBlocks[1].children[1].style.display = 'none';
-      rowBlocks[1].children[2].style.display = 'none';
+      rowBlocks[1].children[0].style.color = "yellow";
+      rowBlocks[1].children[1].style.color = "yellow";
+      rowBlocks[1].children[2].style.color = "yellow";
     }  
     
     if(pipettes["Center"] != false){ // pipette exists
       if(!(name in containerUsage[pipettes["Center"]])) { // containerUsage does not contain this key for this pipette
         console.log('not found CENTER!');
-        rowBlocks[2].children[0].style.display = 'none';
-        rowBlocks[2].children[1].style.display = 'none';
-        rowBlocks[2].children[2].style.display = 'none';
+        rowBlocks[2].children[0].style.color = "green"; // display 'none'
+        rowBlocks[2].children[1].style.color = "green";
+        rowBlocks[2].children[2].style.color = "green";
       }
     } else {
-      rowBlocks[2].children[0].style.display = 'none';
-      rowBlocks[2].children[1].style.display = 'none';
-      rowBlocks[2].children[2].style.display = 'none';
+      rowBlocks[2].children[0].style.color = "green";
+      rowBlocks[2].children[1].style.color = "green";
+      rowBlocks[2].children[2].style.color = "green";
     } 
 
   } 
