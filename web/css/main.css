@@ -131,6 +131,29 @@ code {
 	box-shadow: 1px 1px 1px #888888;
 }
 
+.tron-yellow {
+	background-color: #aaa;
+	color:#fdfdfd;
+}
+
+.tron-yellow:hover, .tron-yellow:active, .tron-yellow:focus {
+	color:#ffff00;
+	/*font-weight: bold;*/
+	box-shadow: 1px 1px 1px #888888;
+}
+
+.tron-green {
+	background-color: #66ff33;
+	color:#fdfdfd;
+}
+
+.tron-green:hover, .tron-green:active, .tron-green:focus {
+	color:#fdfdfd;
+	/*font-weight: bold;*/
+	box-shadow: 1px 1px 1px #888888;
+}
+
+
 .step-btn {
 	position:relative;
 	font-size:2rem;
