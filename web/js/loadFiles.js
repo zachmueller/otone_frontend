@@ -376,74 +376,74 @@ function createAndSend () {
     if(throwError) {
       alert('Please calibrate pipette volumes before running');
     }
-    /*
+    
     else {
 
-      try {
-        robotProtocol = createRobotProtocol(CURRENT_PROTOCOL);
+      //try {
+      //  robotProtocol = createRobotProtocol(CURRENT_PROTOCOL);
+      //}
+      //catch (error) {
+      //  console.log(error);
+      //  alert(error);
+      //}
+
+      //if(robotProtocol) {
+
+      var d = new Date();
+      var dateString = '';
+
+      dateString += d.getDate();
+      dateString += '-';
+      dateString += d.getMonth();
+      dateString += '-';
+      dateString += d.getFullYear();
+      dateString += '-';
+      dateString += d.getHours();
+      dateString += ':';
+      dateString += d.getMinutes();
+      dateString += ':';
+      dateString += d.getSeconds();
+
+      //var savefilename = _FILENAME.split('.')[0] + '-' + dateString + '.json';
+
+      //var blob = new Blob([JSON.stringify({
+      //  'time' : dateString,
+      //  'protocol' : CURRENT_PROTOCOL,
+      //  'executable' : robotProtocol
+      //},undefined,2)], {type: "text/json;charset=utf-8"});
+
+      //var shouldSave = confirm('File processed. Save it to disk?');
+      //
+      //if(shouldSave) saveAs(blob, savefilename);
+
+      //var jobMsg = {
+      //  'type' : 'instructions',
+      //  'data' : robotProtocol
+      //}
+
+      var newJobMsg = {
+        'type':'theProtocol',
+	      'data':JSON.stringify(CURRENT_PROTOCOL,undefined,2)
       }
-      catch (error) {
-        console.log(error);
-        alert(error);
+
+      var shouldRun = confirm('Send file to be run?');
+
+      if(shouldRun) {
+        timeSentJob = new Date().getTime();
+        //sendMessage(jobMsg);
+        sendMessage(newJobMsg);
       }
-
-      if(robotProtocol) {
-
-        var d = new Date();
-        var dateString = '';
-
-        dateString += d.getDate();
-        dateString += '-';
-        dateString += d.getMonth();
-        dateString += '-';
-        dateString += d.getFullYear();
-        dateString += '-';
-        dateString += d.getHours();
-        dateString += ':';
-        dateString += d.getMinutes();
-        dateString += ':';
-        dateString += d.getSeconds();
-
-        var savefilename = _FILENAME.split('.')[0] + '-' + dateString + '.json';
-
-        var blob = new Blob([JSON.stringify({
-          'time' : dateString,
-          'protocol' : CURRENT_PROTOCOL,
-          'executable' : robotProtocol
-        },undefined,2)], {type: "text/json;charset=utf-8"});
-
-        var shouldSave = confirm('File processed. Save it to disk?');
-
-        if(shouldSave) saveAs(blob, savefilename);
-
-        var jobMsg = {
-          'type' : 'instructions',
-          'data' : robotProtocol
-        }
-
-        var newJobMsg = {
-          'type':'theProtocol',
-	  'data':JSON.stringify(CURRENT_PROTOCOL,undefined,2)
-        }
-
-        var shouldRun = confirm('Send file to be run?');
-
-        if(shouldRun) {
-          timeSentJob = new Date().getTime();
-          //sendMessage(jobMsg);
-          sendMessage(newJobMsg);
+      else {
+        var shouldInfinity = confirm('Send file to be run FOR INFINITY?!?!?!?!?!');
+        if(shouldInfinity) {
+          jobMsg.type = 'infinity';
+          sendMessage(jobMsg);
         }
         else {
-          var shouldInfinity = confirm('Send file to be run FOR INFINITY?!?!?!?!?!');
-          if(shouldInfinity) {
-            jobMsg.type = 'infinity';
-            sendMessage(jobMsg);
-          }
-          else {
-            timeSentJob = undefined;
-          }
+          timeSentJob = undefined;
         }
       }
+      //}
     }
     */
   }
