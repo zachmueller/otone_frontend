@@ -1412,8 +1412,9 @@ function relativeCoords(){
 
 
 function listContainers(containersList){
-  containerListMenu = document.getElementById('containerList');
+  containerListMenu = document.getElementById('containerList').children[0];
   for(var item in containersList){
+    console.log('item = '+item);
     
     var tempRow = document.createElement('tr');
     var tempDatum = document.createElement('td');
