@@ -1415,7 +1415,7 @@ function listContainers(containersList){
   containerListMenu = document.getElementById('containerList').children[0];
   for(var item in containersList){
     console.log('item = '+item);
-    
+
     var tempRow = document.createElement('tr');
     var tempDatum = document.createElement('td');
     var PA = document.createElement('td');
@@ -1432,7 +1432,7 @@ function listContainers(containersList){
 
     var containerOption = document.createElement('option');
     tempDatum.value = item;
-    tempDatum.innerHTML = item;
+    tempDatum.innerHTML = containersList[item];
     containerListMenu.appendChild(tempRow);
   }
 }
