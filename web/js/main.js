@@ -1418,8 +1418,8 @@ function listContainers(containersList){
 
     var tempRow = document.createElement('tr');
     var tempDatum = document.createElement('td');
-    var PA = document.createElement('td');
-    var PB = document.createElement('td');
+    //var PA = document.createElement('td');
+    //var PB = document.createElement('td');
 
     var clickEvent = (function(){
       var option = tempDatum;
@@ -1433,6 +1433,9 @@ function listContainers(containersList){
     var containerOption = document.createElement('option');
     tempDatum.value = item;
     tempDatum.innerHTML = containersList[item];
+    tempRow.appendChild(tempDatum);
+    //tempRow.appendChild(PB);
+    //tempRow.appendChild(PA);
     containerListMenu.appendChild(tempRow);
   }
 }
