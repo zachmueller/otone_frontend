@@ -608,10 +608,14 @@ var socketHandler = {
     }
   },
   'containers' : function (data) {
-    var blob = data;//JSON.parse(data);
-    var newContainers = blob.containers;
-    console.log('newContainers...');
-    console.log(newContainers);
+    //var blob = data;//JSON.parse(data);
+    //var newContainers = blob.containers;
+    //console.log('newContainers...');
+    //console.log(newContainers);
+    containersList = data;
+    console.log('containersList');
+    console.log(containersList);
+    listContainers(containersList);
     //if (newContainers) {
     //  saveContainers(newContainers);
     //}
@@ -1404,4 +1408,34 @@ function relativeCoords(){
     'type' : 'relativeCoords'
   };
   sendMessage(msg);
+}
+
+
+function listContainers(containersList){
+  containerListMenu = document.getElementById('containerList');
+  for(var item in containersList){
+    
+    var tempRow = document.createElement('tr');
+    var tempDatum = document.createElement('td');
+    var PA = document.createElement('td');
+    var PB = document.createElement('td');
+
+    var clickEvent = (function(){
+      var option = tempDatum;
+      return function(e) {
+        selectContainerListItem(option);
+      }
+    })();
+
+    tempDatum.addEventListener('click',clickEvent);
+
+    var containerOption = document.createElement('option');
+    tempDatum.value = item;
+    tempDatum.innerHTML = item;
+    containerListMenu.appendChild(tempRow);
+  }
+}
+
+function selectContainerListItem(someDiv){
+  alert('you selected'+toString(someDiv));
 }
