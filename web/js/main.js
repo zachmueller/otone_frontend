@@ -320,6 +320,7 @@ function handleContainers (newContainers) {
 var currentSelectedContainer = undefined;
 var firstTD = undefined;
 var secondTD = undefined;
+var currentSelectedContainerItem = undefined;
 
 function selectContainer(currentDiv) {
 
@@ -1443,5 +1444,10 @@ function listContainers(containersList){
 }
 
 function selectContainerListItem(someTD){
-  alert('you selected'+someTD.innerHTML);
+  alert('you selected '+someTD.innerHTML);
+  if(currentSelectedContainerItem){
+    currentSelectedContainerItem.classList.remove('tron-grey');
+  }
+  currentSelectedContainerItem = someTD;
+  currentSelectedContainerItem.classList.add('tron-grey');
 }
