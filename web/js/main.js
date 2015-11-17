@@ -1441,5 +1441,5 @@ function listContainers(containersList){
 }
 
 function selectContainerListItem(someDiv){
-  alert('you selected'+toString(someDiv));
+  alert('you selected'+toString(someDiv.innerHTML));
 }
