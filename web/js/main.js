@@ -1421,7 +1421,12 @@ function listContainers(containersList){
     var tempDatum = document.createElement('td');
     //var PA = document.createElement('td');
     //var PB = document.createElement('td');
-
+    var clickEvent = (function(){
+      var option = tempDatum;
+      return function(e) {
+        selectContainerListItem(option);
+      }
+    })();
 
     tempDatum.addEventListener('click',clickEvent);
 
@@ -1429,12 +1434,7 @@ function listContainers(containersList){
     tempDatum.value = item;
     tempDatum.innerHTML = containersList[item];
 
-    var clickEvent = (function(){
-      var option = tempDatum;
-      return function(e) {
-        selectContainerListItem(option);
-      }
-    })();
+    
 
     tempRow.appendChild(tempDatum);
     //tempRow.appendChild(PB);
