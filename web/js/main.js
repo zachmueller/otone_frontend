@@ -1444,10 +1444,11 @@ function listContainers(containersList){
 }
 
 function selectContainerListItem(someTD){
-  alert('you selected '+someTD.innerHTML);
+  
   if(currentSelectedContainerItem){
     currentSelectedContainerItem.classList.remove('tron-grey');
   }
   currentSelectedContainerItem = someTD;
   currentSelectedContainerItem.classList.add('tron-grey');
+  alert('you selected '+someTD.innerHTML);
 }
