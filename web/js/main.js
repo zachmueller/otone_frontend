@@ -1421,6 +1421,13 @@ function listContainers(containersList){
     //var PA = document.createElement('td');
     //var PB = document.createElement('td');
 
+
+    tempDatum.addEventListener('click',clickEvent);
+
+    var containerOption = document.createElement('option');
+    tempDatum.value = item;
+    tempDatum.innerHTML = containersList[item];
+
     var clickEvent = (function(){
       var option = tempDatum;
       return function(e) {
@@ -1428,11 +1435,6 @@ function listContainers(containersList){
       }
     })();
 
-    tempDatum.addEventListener('click',clickEvent);
-
-    var containerOption = document.createElement('option');
-    tempDatum.value = item;
-    tempDatum.innerHTML = containersList[item];
     tempRow.appendChild(tempDatum);
     //tempRow.appendChild(PB);
     //tempRow.appendChild(PA);
@@ -1440,6 +1442,6 @@ function listContainers(containersList){
   }
 }
 
-function selectContainerListItem(someDiv){
-  alert('you selected'+toString(someDiv.innerHTML));
+function selectContainerListItem(someTD){
+  alert('you selected'+someDiv.innerHTML);
 }
