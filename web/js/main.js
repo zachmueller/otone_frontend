@@ -1443,5 +1443,5 @@ function listContainers(containersList){
 }
 
 function selectContainerListItem(someTD){
-  alert('you selected'+someDiv.innerHTML);
+  alert('you selected'+someTD.innerHTML);
 }
